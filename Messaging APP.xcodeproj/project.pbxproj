@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03044E751E1EC0B5001DB8E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03044E771E1EC0B5001DB8E0 /* Main.storyboard */; };
 		030A36591E13A38500DAE9B4 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A36581E13A38500DAE9B4 /* ContactsTableViewController.swift */; };
 		030A365C1E13A43300DAE9B4 /* ChecKContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A365A1E13A43300DAE9B4 /* ChecKContactsTableViewCell.swift */; };
 		030A365D1E13A43300DAE9B4 /* ChecKContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030A365B1E13A43300DAE9B4 /* ChecKContactsTableViewCell.xib */; };
 		030A36601E13A4AC00DAE9B4 /* ContactsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030A365E1E13A4AC00DAE9B4 /* ContactsDetailTableViewCell.swift */; };
 		030A36611E13A4AC00DAE9B4 /* ContactsDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030A365F1E13A4AC00DAE9B4 /* ContactsDetailTableViewCell.xib */; };
+		030B7CA51E1E4C5400F519BF /* AddAccountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7CA41E1E4C5400F519BF /* AddAccountProtocol.swift */; };
 		0349AF6E1E0968330071670F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349AF6D1E0968330071670F /* MapViewController.swift */; };
 		0349AF701E099E8C0071670F /* CustomSegueToMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349AF6F1E099E8C0071670F /* CustomSegueToMap.swift */; };
 		03603C9E1E1B5BF5000C6ED4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03603C9D1E1B5BF5000C6ED4 /* Constants.swift */; };
-		03603CA01E1B6BCE000C6ED4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03603C9F1E1B6BCE000C6ED4 /* Main.storyboard */; };
 		03646A101E1B727C00A3910A /* MyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03646A0F1E1B727C00A3910A /* MyQRCodeViewController.swift */; };
 		03646A121E1B843E00A3910A /* QRcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03646A111E1B843E00A3910A /* QRcodeScannerView.swift */; };
 		03914BC71E1A02FB002DDA3D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03914BC61E1A02FB002DDA3D /* AddFriendsViewController.swift */; };
@@ -57,15 +58,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03044E761E1EC0B5001DB8E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		030A36581E13A38500DAE9B4 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		030A365A1E13A43300DAE9B4 /* ChecKContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecKContactsTableViewCell.swift; sourceTree = "<group>"; };
 		030A365B1E13A43300DAE9B4 /* ChecKContactsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChecKContactsTableViewCell.xib; sourceTree = "<group>"; };
 		030A365E1E13A4AC00DAE9B4 /* ContactsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsDetailTableViewCell.swift; sourceTree = "<group>"; };
 		030A365F1E13A4AC00DAE9B4 /* ContactsDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsDetailTableViewCell.xib; sourceTree = "<group>"; };
+		030B7CA41E1E4C5400F519BF /* AddAccountProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAccountProtocol.swift; path = ../AddAccountProtocol.swift; sourceTree = "<group>"; };
 		0349AF6D1E0968330071670F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0349AF6F1E099E8C0071670F /* CustomSegueToMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegueToMap.swift; sourceTree = "<group>"; };
 		03603C9D1E1B5BF5000C6ED4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		03603C9F1E1B6BCE000C6ED4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		03646A0F1E1B727C00A3910A /* MyQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewController.swift; sourceTree = "<group>"; };
 		03646A111E1B843E00A3910A /* QRcodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRcodeScannerView.swift; sourceTree = "<group>"; };
 		03914BC61E1A02FB002DDA3D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		030B7CA61E1E4C5E00F519BF /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				030B7CA41E1E4C5400F519BF /* AddAccountProtocol.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
 		03B553DC1E1A736C0023EF9A /* addFriends */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,10 +178,11 @@
 		03CEE71D1DF8F4DD00745306 /* Messaging APP */ = {
 			isa = PBXGroup;
 			children = (
+				030B7CA61E1E4C5E00F519BF /* Protocol */,
 				03B553DC1E1A736C0023EF9A /* addFriends */,
 				03C75F8D1DFFD948007B7736 /* Messaging APP.entitlements */,
 				03CEE71E1DF8F4DD00745306 /* AppDelegate.swift */,
-				03603C9F1E1B6BCE000C6ED4 /* Main.storyboard */,
+				03044E771E1EC0B5001DB8E0 /* Main.storyboard */,
 				03E251D91E0133E600424511 /* LoginViewController.swift */,
 				03CEE7201DF8F4DD00745306 /* ViewController.swift */,
 				03CEE7511DF9159200745306 /* ComposeViewController.swift */,
@@ -361,7 +372,7 @@
 				030A365D1E13A43300DAE9B4 /* ChecKContactsTableViewCell.xib in Resources */,
 				03CEE72C1DF8F4DD00745306 /* LaunchScreen.storyboard in Resources */,
 				03ACE3A11DF93EC600B1AF84 /* GoogleService-Info.plist in Resources */,
-				03603CA01E1B6BCE000C6ED4 /* Main.storyboard in Resources */,
+				03044E751E1EC0B5001DB8E0 /* Main.storyboard in Resources */,
 				030A36611E13A4AC00DAE9B4 /* ContactsDetailTableViewCell.xib in Resources */,
 				03CEE7291DF8F4DD00745306 /* Assets.xcassets in Resources */,
 			);
@@ -531,6 +542,7 @@
 				03CEE7271DF8F4DD00745306 /* Messaging_APP.xcdatamodeld in Sources */,
 				03CEE71F1DF8F4DD00745306 /* AppDelegate.swift in Sources */,
 				03E251DA1E0133E600424511 /* LoginViewController.swift in Sources */,
+				030B7CA51E1E4C5400F519BF /* AddAccountProtocol.swift in Sources */,
 				03E90A461E02B25900EA7DEC /* NewRegisterViewController.swift in Sources */,
 				03914BC71E1A02FB002DDA3D /* AddFriendsViewController.swift in Sources */,
 				03603C9E1E1B5BF5000C6ED4 /* Constants.swift in Sources */,
@@ -579,6 +591,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		03044E771E1EC0B5001DB8E0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03044E761E1EC0B5001DB8E0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		03CEE72A1DF8F4DD00745306 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

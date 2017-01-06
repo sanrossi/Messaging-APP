@@ -93,6 +93,10 @@
             value = "disable"
             isEnabled = "NO">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            value = ""
+            isEnabled = "NO">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>

@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import MobileCoreServices
+
 
 class AddFriendbyQRCodeViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate{
  
@@ -23,10 +25,31 @@ class AddFriendbyQRCodeViewController: UIViewController,AVCaptureMetadataOutputO
     
     private var isSessionRunning = false
     private var sessionQueue = DispatchQueue(label:"session queue",attributes:[],target:nil)
+    
     private var setupResult:SessionSetupResult = .success
+ 
+   
+   
+   
+//    @IBAction func focusAndExposeTap(_ sender: UITapGestureRecognizer) {
+//        let devicePoint = self.QRcodeScannerView.videoPreviewLayer.captureDevicePointOfInterest(for: sender.location(in: sender.view))
+//        focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
+//        
+//        
+//   
+//        
+//        
+//        
+//    }
+  
+
     var videoDeviceInput :AVCaptureDeviceInput!
+    
     var videoOutput = AVCaptureVideoDataOutput()
-     let captureMetadataOutput = AVCaptureMetadataOutput()
+    
+    let captureMetadataOutput = AVCaptureMetadataOutput()
+    
+    
     //MARK:Handling Camera Source is available or not
     enum CameraTypes {
         case Front,Back,Both,None
@@ -49,7 +72,7 @@ class AddFriendbyQRCodeViewController: UIViewController,AVCaptureMetadataOutputO
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+       
         
       QRcodeScannerView.session = session
       QRcodeScannerView.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
@@ -100,88 +123,99 @@ class AddFriendbyQRCodeViewController: UIViewController,AVCaptureMetadataOutputO
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sessionQueue.async {
-            switch self.setupResult{
+            switch self.setupResult {
             case .success:
                 self.session.startRunning()
                 self.isSessionRunning = self.session.isRunning
             case .notAuthorized:
-                    DispatchQueue.main.async {
-                        [unowned self]in
-                        let message = NSLocalizedString("Tico doesn't have permission to use the camera,please change privacy setting", comment: "Alert message when the user has denied access to the camera")
-                        let alertController = UIAlertController(title:"Tico",message:message,preferredStyle:.alert)
-                        alertController.addAction(UIAlertAction(title:NSLocalizedString("Setting", comment: "Alert button to open Setting"),style:.default,handler:{(action) in
-                            UIApplication.shared.open(URL(string:UIApplicationOpenURLOptionUniversalLinksOnly)!, options: [:], completionHandler: nil)
+                DispatchQueue.main.async { [unowned self] in
+                    let message = NSLocalizedString("DemoCamera doesn't have permission to use the camera, please change privacy settings", comment: "Alert message when the user has denied access to the camera")
+                    let alertController = UIAlertController(title: "DemoCamera", message: message, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .`default`, handler: { action in
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                        } else {
+                            // Fallback on earlier versions
+                        }
                         
-                        
-                        
-                        
-                        }))
-                        alertController.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Alert OK button"),style:.cancel,handler:nil))
-                        self.present(alertController,animated: true,completion: nil)
+                    }))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                 }
-            case.configurationFailed:
-                DispatchQueue.main.async {[unowned self]in
+            case .configurationFailed:
+                DispatchQueue.main.async { [unowned self] in
                     let message = NSLocalizedString("Unable to capture media", comment: "Alert message when something goes wrong during capture session configuration")
-                    let alertController = UIAlertController(title:"Tico",message:message,preferredStyle:.alert)
-                   
-                    alertController.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Alert OK button"),style:.cancel,handler:nil))
-                    self.present(alertController,animated: true,completion: nil)
+                    let alertController = UIAlertController(title: "DemoCamera", message: message, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
+                    
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        sessionQueue.async {
-            [unowned self ]in
+        sessionQueue.async { [unowned self] in
             self.session.stopRunning()
             self.isSessionRunning = self.session.isRunning
         }
+        super.viewWillDisappear(animated)
     }
     //MARK:Global Functions
-    private func configureSession(cameraType: AVCaptureDevicePosition){
-        if(setupResult != .success){
-        return
+    private func configureSession(cameraType: AVCaptureDevicePosition) {
+        if setupResult != .success {
+            return
         }
-        session.beginConfiguration()
-        //..
         
-        session.sessionPreset = AVCaptureSessionPresetPhoto
+        session.beginConfiguration()
+        
+        session.sessionPreset = AVCaptureSessionPresetHigh
+        
+        
         //Add video input
-        do{
-            let videoDevice = AddFriendbyQRCodeViewController.deviceWithMediaType(AVMediaTypeVideo,preferrinPosition:cameraType)
-            let videoDeviceInput = try AVCaptureDeviceInput(device:videoDevice)
+        do {
+            let videoDevice = AddFriendbyQRCodeViewController.deviceWithMediaType(AVMediaTypeVideo, preferrinPosition: cameraType)
+            let videoDeviceInput = try AVCaptureDeviceInput(device: videoDevice)
             //Add input
-            if session.canAddInput(videoDeviceInput){
-            session.addInput(videoDeviceInput)
-            self.videoDeviceInput = videoDeviceInput
-
-                videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable:Int(kCVPixelFormatType_32BGRA)]
+            if session.canAddInput(videoDeviceInput) {
+                session.addInput(videoDeviceInput)
+                self.videoDeviceInput = videoDeviceInput
+                videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: Int(kCVPixelFormatType_32BGRA)]
                 videoOutput.alwaysDiscardsLateVideoFrames = true
-            }else{
-            
-            print("Cloud not add video device input to the session")
+            } else {
+                print("Could not add video device input to the session")
+                setupResult = .configurationFailed
+                session.commitConfiguration()
+                return
+            }
+        } catch {
+            print("Could not create video device input \(error.localizedDescription)")
             setupResult = .configurationFailed
             session.commitConfiguration()
-            }
-        }catch{
-        print(error.localizedDescription)
-        setupResult = .configurationFailed
-        session.commitConfiguration()
-        
+            return
         }
-    //Add output
-        if session.canAddOutput(videoOutput){
-        session.addOutput(captureMetadataOutput)
-            captureMetadataOutput.setMetadataObjectsDelegate(self, queue:DispatchQueue(label:"dispatch queue",attributes: .concurrent))
-        captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
-        session.addOutput(videoOutput)
         
+        if session.canAddOutput(videoOutput) {
+            session.addOutput(captureMetadataOutput)
+            captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue(label: "QRCode", attributes: .concurrent))
+            captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+            session.addOutput(videoOutput)
+            
+        } else {
+            print("Could not add photo output to the session")
+            setupResult = .configurationFailed
+            session.commitConfiguration()
+            return
         }
-
+        
         session.commitConfiguration()
     }
+
+    
+    
+    
+    
     private class func deviceWithMediaType(_ mediaType:String,preferrinPosition position:AVCaptureDevicePosition) ->AVCaptureDevice?{
         if let devices = AVCaptureDevice.devices(withMediaType: mediaType) as?[AVCaptureDevice]{
             return devices.filter({$0.position == position}).first
@@ -197,7 +231,9 @@ class AddFriendbyQRCodeViewController: UIViewController,AVCaptureMetadataOutputO
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+        
         if let videoPreviewLayerConnection = self.QRcodeScannerView.videoPreviewLayer.connection{
+            
             let deviceOrientation = UIDevice.current.orientation
             guard let newVideoOrientation = self.videoOrientationFor(deviceOrientation),deviceOrientation.isPortrait || deviceOrientation.isLandscape else{
             return
@@ -217,16 +253,61 @@ class AddFriendbyQRCodeViewController: UIViewController,AVCaptureMetadataOutputO
         
         
         }
-        func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects: [Any]!, from: AVCaptureConnection!){
+
         
-        
-        
-        
-        
-        }
-    
-    
     }
+    
+        
+        
+        
+        
+        
+        
+        
+
+
+        
+        func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+            self.session.stopRunning()
+            if let metadataObject = metadataObjects.first {
+                let readableObject = metadataObject as! AVMetadataMachineReadableCodeObject
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                print(readableObject.stringValue)
+            }
+        }
+        
+        
+
+    
+    
+    
+    
+    
+    
+//    private func focus(with focusMode: AVCaptureFocusMode, exposureMode: AVCaptureExposureMode, at devicePoint: CGPoint, monitorSubjectAreaChange: Bool) {
+//        sessionQueue.async { [unowned self] in
+//            if let device = self.videoDeviceInput.device {
+//                do {
+//                    try device.lockForConfiguration()
+//                    
+//                    if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(focusMode) {
+//                        device.focusPointOfInterest = devicePoint
+//                        device.focusMode = focusMode
+//                    }
+//                    
+//                    if device.isExposurePointOfInterestSupported && device.isExposureModeSupported(exposureMode) {
+//                        device.exposurePointOfInterest = devicePoint
+//                        device.exposureMode = exposureMode
+//                    }
+//                    device.isSubjectAreaChangeMonitoringEnabled = monitorSubjectAreaChange
+//                    device.unlockForConfiguration()
+//                } catch {
+//                    print("Could not lock device for configuration: \(error.localizedDescription)")
+//                }
+//            }
+//        }
+//    }
+
     /*
     // MARK: - Navigation
 

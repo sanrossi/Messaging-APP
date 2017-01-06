@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-class NewRegisterViewController: UIViewController {
+class NewRegisterViewController: UIViewController ,AddAccountProtocol {
     enum Friendstate:String {
         case notfriend = "notfriend"
         case invited = "invited"
@@ -17,15 +17,22 @@ class NewRegisterViewController: UIViewController {
         case friend = "friend"
         
     }
+    
     @IBOutlet weak var userName: UITextField!
 
     @IBOutlet weak var email: UITextField!
     
     @IBOutlet weak var passWord: UITextField!
      var ref: FIRDatabaseReference!
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        ref = FIRDatabase.database().reference()
+       
         // Do any additional setup after loading the view.
     }
     
@@ -39,7 +46,7 @@ class NewRegisterViewController: UIViewController {
         
        
       // var databaseHandle:FIRDatabaseHandle?
-         if let email = email.text, let password = passWord.text, let username = userName.text {
+    if let email = email.text, let password = passWord.text, let username = userName.text {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: {(user,error) in
             if error != nil{
               

@@ -22,6 +22,7 @@ class AddFriendbyEmailViewController: UIViewController {
     }
     
 
+    @IBOutlet weak var searchBarFindFriends: UISearchBar!
     /*
     // MARK: - Navigation
 
