@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
-class NewRegisterViewController: UIViewController ,AddAccountProtocol {
+class NewRegisterViewController: UIViewController ,AccountProtocol {
     enum Friendstate:String {
         case notfriend = "notfriend"
         case invited = "invited"

@@ -8,13 +8,21 @@
 
 import UIKit
 
-class MyQRCodeViewController: UIViewController {
+class MyQRCodeViewController: UIViewController,MyQRCodeProtocol{
 
-    @IBOutlet weak var imageDisplayMyQRCode: UIImageView!
+    @IBOutlet weak var MyQRView: MyQRCodeView!
+        {
+    didSet {
+    self.MyQRView.delegate = self
+        }
+    }
+ 
+
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-          imageDisplayMyQRCode.image = generaterQRCodeFromString(string: "eileen2224hotmailcom")
+          self.MyQRView.MyQRimg.image = generaterQRCodeFromString(string: "eileen2224hotmailcom")
         // Do any additional setup after loading the view.
     }
 

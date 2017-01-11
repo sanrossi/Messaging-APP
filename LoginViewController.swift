@@ -8,61 +8,69 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
-class LoginViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
-    
-    @IBOutlet weak var passwordTextField: UITextField!
-    
-    
-    @IBAction func SignIn(_ sender: UIButton) {
-        
-        if let email = emailTextField.text ,let password = passwordTextField.text {
-            FIRAuth.auth()?.signIn(withEmail: email,password: password, completion:{ (user,error) in
-                if error == nil{
-                    print("Email user authenticated with Firebase")
-                   self.performSegue(withIdentifier: "CustomSegueToMap", sender: self)
+class LoginViewController: UIViewController, AccountProtocol, AuthenticationProtocol, LoginViewProtocol {
 
-                }else{
-                    print("Unable to authenticate with Firebase using email")
-
-                    
-                }
-            })
+    @IBOutlet weak var loginView: LoginView! {
+        didSet {
+            loginView.delegate = self
         }
     }
-    
-    
-    @IBAction func register(_ sender: UIButton) {
-        
-        
-        
-        
-        
-        
+    var auth: Authentication! {
+        didSet {
+            auth.delagate = self
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        // Do any additional setup after loading the view.
+        
+        auth = Authentication.init()
+//        if let user = FIRAuth.auth()?.currentUser {
+//            auth.signIn(user, segue: Constants.Segue.loginToMain)
+//        }
+//        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        print("LoginViewController deinit")
     }
-    */
+    
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+    }
+}
+
+// MARK: - LoginViewProtocol
+extension LoginViewController {
+    func didLoginButtonPressed(email: String?, password: String?) {
+        if let email = email, let password = password {
+            if (email != "" && password != "") {
+                auth.login(email: email, password: password)
+            } else {
+                auth.inputErrorAlert()
+            }
+        }
+    }
+    
+    func didSignUpButtonPressed(email: String?, password: String?) {
+        performSegue(withIdentifier: Constants.Segue.loginToSignUp, sender: nil)
+    }
+}
+
+
+// MARK: - AuthenticationProtocol
+extension LoginViewController {
+    func didLogin(user: FIRUser?, error: Error?) {
+        if let error = error {
+            self.errorAlert(title: Constants.ErrorAlert.alertTitle, message: error.localizedDescription, onViewController: self)
+        } else {
+            auth.signIn(user, segue: Constants.Segue.loginToMain)
+        }
+   }
 
 }

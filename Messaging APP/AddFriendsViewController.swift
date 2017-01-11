@@ -22,7 +22,8 @@ class AddFriendsViewController: UIViewController {
         
         UIView.animate(withDuration: 0.5, animations: {
             self.addFreindByEmailView.alpha = 1
-            self.addFriendbyQRCodeView.alpha = 0
+            self.addFriendbyQRCodeView.isHidden = true
+            
         })
      
         
@@ -31,7 +32,8 @@ class AddFriendsViewController: UIViewController {
     
     @IBAction func addfriendsbyQRCode(_ sender: Any) {
         UIView.animate(withDuration: 0.5, animations: {
-            self.addFreindByEmailView.alpha = 0
+            
+           self.addFreindByEmailView.isHidden = true
             self.addFriendbyQRCodeView.alpha = 1
         })
         

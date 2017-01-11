@@ -12,6 +12,7 @@ class QRcodeScannerView: UIView {
     var videoPreviewLayer:AVCaptureVideoPreviewLayer{
      return layer as! AVCaptureVideoPreviewLayer
     }
+    //AVCaptureSession 对象用来处理从摄像头和麦克风输入的流
     var session:AVCaptureSession?{
         get{
      return videoPreviewLayer.session
