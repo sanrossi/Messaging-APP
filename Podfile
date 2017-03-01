@@ -19,4 +19,8 @@ target 'Messaging APP' do
    pod 'Firebase/Core'
    pod 'Firebase/Database'
    pod 'Firebase/Auth'
+	pod 'GoogleMaps'
+	pod 'GooglePlaces'
+
+   
 end

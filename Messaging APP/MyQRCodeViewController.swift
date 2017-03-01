@@ -17,12 +17,15 @@ class MyQRCodeViewController: UIViewController,MyQRCodeProtocol{
         }
     }
  
+    @IBAction func returnKeyButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-          self.MyQRView.MyQRimg.image = generaterQRCodeFromString(string: "eileen2224hotmailcom")
+          self.MyQRView.MyQRimg.image = generaterQRCodeFromString(string: "eileen2224@hotmail.com")
         // Do any additional setup after loading the view.
     }
 
@@ -36,8 +39,10 @@ class MyQRCodeViewController: UIViewController,MyQRCodeProtocol{
     
     func generaterQRCodeFromString(string :String)->UIImage?{
         let data = string.data(using: String.Encoding.ascii)
-        let filter = CIFilter(name:"CIQRCodeGenerator")
+        
+        let filter = CIFilter(name:"CIQRCodeGenerator")//生成QRCode二維條碼
         filter?.setValue(data, forKey: "inputMessage")
+        
         let transform = CGAffineTransform(scaleX: 10, y: 10)
         
         let output = filter?.outputImage?.applying(transform)

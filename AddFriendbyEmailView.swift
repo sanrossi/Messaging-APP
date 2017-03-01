@@ -11,6 +11,7 @@ import UIKit
 protocol  AddFriendbyEmailViewProtocol:
 class{
     func didSearButtonPressed(email:String?)
+    func didAddButtonPressed()
 }
 
 
@@ -31,6 +32,12 @@ class AddFriendbyEmailView: UIView, UITextFieldDelegate {
     }
     
     
+ 
+    @IBAction func addButton(_ sender: Any) {
+        self.delegate?.didAddButtonPressed()
+        
+    }
+
     
     @IBOutlet weak var resultUserNameLabel: UILabel!
     
@@ -69,9 +76,7 @@ class AddFriendbyEmailView: UIView, UITextFieldDelegate {
         let email = self.emailSearchText.text
          self.delegate?.didSearButtonPressed(email:email)
         
-//        resultUserNameLabel.text = resultforLabelList[0]
-//        resultEmailLabel.text = resultforLabelList[1]
-//        
+      
         
         
     }

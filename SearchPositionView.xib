@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchPositionView" customModule="Messaging_APP" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Jml-nx-Obx"/>
+                <outlet property="mapView" destination="Aje-T6-KL9" id="4vK-1L-V3e"/>
+                <outlet property="searchWithAddress" destination="Hoy-GE-y7j" id="ksS-6D-zz3"/>
+                <outlet property="tableView" destination="txz-Z0-fCA" id="aIN-5f-iju"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aje-T6-KL9">
+                    <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="txz-Z0-fCA">
+                    <rect key="frame" x="0.0" y="110" width="375" height="296"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="296" id="Ht1-hp-nDf"/>
+                    </constraints>
+                </tableView>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kx9-fB-sT8">
+                    <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="VNg-pE-qQ7"/>
+                    </constraints>
+                    <items>
+                        <navigationItem title="Title" id="f0g-v5-GNq">
+                            <barButtonItem key="leftBarButtonItem" image="backArrow.png" id="P89-uC-z8x">
+                                <connections>
+                                    <action selector="returnKeyButton:" destination="-1" id="JJK-jI-SVe"/>
+                                </connections>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Hoy-GE-y7j">
+                    <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="qgG-QF-suF"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Kx9-fB-sT8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0uD-9g-ni8"/>
+                <constraint firstItem="txz-Z0-fCA" firstAttribute="top" secondItem="Hoy-GE-y7j" secondAttribute="bottom" id="ABW-C9-2UR"/>
+                <constraint firstItem="Hoy-GE-y7j" firstAttribute="top" secondItem="Kx9-fB-sT8" secondAttribute="bottom" id="JTY-GZ-sDH"/>
+                <constraint firstItem="Aje-T6-KL9" firstAttribute="top" secondItem="Hoy-GE-y7j" secondAttribute="bottom" id="KYW-th-pPL"/>
+                <constraint firstItem="Hoy-GE-y7j" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RL0-sJ-L7m"/>
+                <constraint firstAttribute="bottom" secondItem="Aje-T6-KL9" secondAttribute="bottom" id="SFW-6O-zNR"/>
+                <constraint firstItem="txz-Z0-fCA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uyi-rw-Xxv"/>
+                <constraint firstAttribute="trailing" secondItem="Kx9-fB-sT8" secondAttribute="trailing" id="WU0-Zh-MBG"/>
+                <constraint firstAttribute="trailing" secondItem="txz-Z0-fCA" secondAttribute="trailing" id="a7H-c1-bTN"/>
+                <constraint firstAttribute="trailing" secondItem="Hoy-GE-y7j" secondAttribute="trailing" id="ay5-9d-n23"/>
+                <constraint firstItem="Kx9-fB-sT8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="22" id="ezB-vH-1yP"/>
+                <constraint firstAttribute="trailing" secondItem="Aje-T6-KL9" secondAttribute="trailing" id="gn1-BW-8vq"/>
+                <constraint firstItem="Aje-T6-KL9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zNd-fH-966"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backArrow.png" width="20" height="20"/>
+    </resources>
+</document>

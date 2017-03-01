@@ -8,28 +8,32 @@
 
 import UIKit
 import AVFoundation
-class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewProtocol{
-    
-  
+class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewProtocol,AddFriendDelegate,AccountProtocol{
+    var friendNode: String? = ""
+    var addFriend: AddFriend!
+    fileprivate var UserNameLabel:String! = ""
+    fileprivate var EmailLabel:String! = ""
     @IBOutlet weak var QRcodeView: AddFriendByQRCodeView!{
         didSet {
-     QRcodeView.delegate = self
+            QRcodeView.delegate = self
         }
-    
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        addFriend = AddFriend.init()
+        addFriend.delagate = self
+        //self.QRcodeView.resultEmailLabel.isHidden = true
+        //self.QRcodeView.resultUserNameLabel.isHidden = true
         
         
         
+        
+        //self.QRcodeView.prepareForViewDidLoad(<#T##status: Bool##Bool#>)
+        //將 session 傳給 view，因此使他能夠顯示圖片
         self.QRcodeView.QRcodeScannerView.session = QRcodeView.session
-        //將 session 传递给 view，因此它能显示视图
+        //表二維度充滿整個區域
         self.QRcodeView.QRcodeScannerView.videoPreviewLayer.videoGravity = AVLayerVideoGravityResize
-        //表示所取得的影像必須以等比例的方式縮放來填滿我們所指定的大小（CGRect rect）
-        
-        
-        
-        
         
         
         //MARK:AVCaptureDevice authorized
@@ -38,14 +42,16 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
             break
             
         case .notDetermined:
-             QRcodeView.sessionQueue.suspend()
             //sessionQueue 終止
+            QRcodeView.sessionQueue.suspend()
+            
             AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeAudio, completionHandler: {[unowned self]
                 granted in
                 if !granted{
                     self.QRcodeView.setupResult = .notAuthorized
                 }
-                self.QRcodeView.sessionQueue.resume()// 一旦请求通过，重新开启 queue
+                //一旦請求通過，重新開啟queue
+                self.QRcodeView.sessionQueue.resume()
             })
             
         default:
@@ -75,7 +81,7 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
         self.QRcodeView.sessionQueue.async {
             switch self.QRcodeView.setupResult {
             case .success:
-               self.QRcodeView.session.startRunning()
+                self.QRcodeView.session.startRunning()
                 self.QRcodeView.isSessionRunning = self.QRcodeView.session.isRunning
             case .notAuthorized:
                 DispatchQueue.main.async { [unowned self] in
@@ -107,20 +113,20 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
     
     override func viewWillDisappear(_ animated: Bool) {
         self.QRcodeView.sessionQueue.async { [unowned self] in
-            self.QRcodeView.session.stopRunning()
+         //   self.QRcodeView.session.stopRunning()
             self.QRcodeView.isSessionRunning = self.QRcodeView.session.isRunning
         }
         super.viewWillDisappear(animated)
     }
-
     
     
     
-
-
+    
+    
+    
     @IBOutlet weak var QRcodeScannerView: AddFriendByQRCodeView!{
         didSet{
-         QRcodeScannerView.delegate = self
+            QRcodeScannerView.delegate = self
         }
     }
     override func didReceiveMemoryWarning() {
@@ -147,7 +153,7 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
     
     
     
-
+    
     
     
     
@@ -165,7 +171,7 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
     }
     
     
-  
+    
     
     
     
@@ -189,21 +195,100 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
     }
     
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func didfindMyQRCodeButtonPressed(){
-    
-     performSegue(withIdentifier: Constants.Segue.FindFriendsQRCodeToMyQRCode, sender: nil)
-    
+        
+        performSegue(withIdentifier: Constants.Segue.FindFriendsQRCodeToMyQRCode, sender: nil)
+        
     }
+    
+    func sendbackAccount(friendAccount:String){
+        
+        
+        self.addFriend.searchFriends(friendAccount)
+    
+        self.friendNode = self.emailToNode(friendAccount)
+    }
+    
+
 
 }
+
+
+
+
+
+
+// MARK: - AddFriendDelegate
+extension AddFriendbyQRcodeViewController {
+    
+    func didSearchFriend(email: String?, username: String?) {
+        if let email = email, let username = username {
+            
+            UserNameLabel = username
+            
+        
+            EmailLabel = email
+            
+//     self.QRcodeView.resultEmailLabel.isHidden    = false
+//     self.QRcodeView.resultUserNameLabel.isHidden = false
+          //  self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: nil)
+        
+            self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: self)
+            
+            
+            
+            
+        } else {
+           
+            UserNameLabel = "Not Found"
+            EmailLabel = "Not Found"
+//      self.QRcodeView.resultEmailLabel.isHidden    = false
+//      self.QRcodeView.resultUserNameLabel.isHidden = false
+//            self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: self)
+            
+            
+        }
+        
+   
+        
+        
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FriendsQRCodeToAccount"{
+            if let nextViewController = segue.destination as? AddFriendAccountViewController{
+                   print(UserNameLabel)
+                print(EmailLabel)
+                nextViewController.userNameToDisplay = UserNameLabel
+                nextViewController.emailToDisplay = EmailLabel
+            }
+        }
+    }
+    
+    
+    
+//    func didCheckThisEmail(result: FriendState) {
+//        if result == .none {
+//            addFriend.invite(QRcodeView.resultEmailLabel.text!, username: self.QRcodeView.resultEmailLabel.text!)
+//        } else {
+//            self.errorAlert(title: Constants.ErrorAlert.alertTitle, message: "You are already friends, or waiting to accept the invitation.", onViewController: self)
+//        }
+//}
+
+
+
+}
+

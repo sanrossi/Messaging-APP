@@ -8,38 +8,23 @@
 
 import UIKit
 
-class AddFriendsViewController: UIViewController {
+class AddFriendsViewController: UIViewController,AddFriendMainViewProtocol {
 
     
     @IBOutlet weak var addFreindByEmailView: UIView!
-   
-   
-    
+
     @IBOutlet weak var addFriendbyQRCodeView: UIView!
   
-    
-    @IBAction func addfriendsbyemail(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.addFreindByEmailView.alpha = 1
-            self.addFriendbyQRCodeView.isHidden = true
-            
-        })
-     
-        
-        
+
+    @IBOutlet weak var FrontButton: AddFriendMainView!{
+        didSet{
+        FrontButton.delegate = self
+        }
     }
+
     
-    @IBAction func addfriendsbyQRCode(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, animations: {
-            
-           self.addFreindByEmailView.isHidden = true
-            self.addFriendbyQRCodeView.alpha = 1
-        })
-        
-        
-    }
-    override func viewDidLoad() {
+    
+       override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -60,5 +45,34 @@ class AddFriendsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+// MARK: - didButtonPressed
+extension AddFriendsViewController{
+    func didQRCodeButtonPressed(){
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            self.addFreindByEmailView.isHidden = false
+            self.addFriendbyQRCodeView.isHidden = true
+        })
+     
+    }
+    func didEmailButtonPressed(){
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            self.addFreindByEmailView.isHidden = true
+            self.addFriendbyQRCodeView.isHidden = false
+        })
+     
+        
+    }
+    func didreturnKeyButtonPressed(){
+     
+       dismiss(animated: true, completion: nil)
+    
+    }
+
+
 
 }

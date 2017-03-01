@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="SkM-W4-tYK" secondAttribute="bottom" constant="46" id="Bwg-eu-azB"/>
+                <constraint firstAttribute="trailing" secondItem="SkM-W4-tYK" secondAttribute="trailing" constant="35" id="UYs-C6-YZd"/>
+                <constraint firstItem="SkM-W4-tYK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="177" id="YEz-ZE-s5t"/>
                 <constraint firstAttribute="bottom" secondItem="SkM-W4-tYK" secondAttribute="bottom" constant="46" id="jKK-bu-2Zh"/>
+                <constraint firstItem="SkM-W4-tYK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="nUF-Jg-zza"/>
                 <constraint firstAttribute="trailing" secondItem="SkM-W4-tYK" secondAttribute="trailing" constant="35" id="yAn-fW-xOb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

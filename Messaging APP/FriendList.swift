@@ -33,7 +33,7 @@ class FriendList: AccountProtocol {
             guard let strongSelf = self else {return}
             if (snapshot.exists()) {
                 let friends = snapshot.value as! Dictionary<String, Any>
-                
+                print(friends)
                 var friendArray: [FriendInfo] = []
                 var beInvitedArray: [FriendInfo] = []
                 for (k, _) in friends {

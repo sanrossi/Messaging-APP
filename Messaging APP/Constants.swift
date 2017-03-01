@@ -16,6 +16,7 @@ struct Constants {
         static let listToAccept = "listToAccept"
         static let listToMessage = "listToMessage"
         static let FindFriendsQRCodeToMyQRCode = "FriendsQRCodeToMyQRCode"
+        static let MessageToChangPositionMap = "MessageToChangPositionMap"
     }
     
     struct FirebaseKey {
@@ -23,6 +24,8 @@ struct Constants {
         static let username = "username"
         static let password = "password"
         static let state = "state"
+        static let time = "time"
+        static let content = "content"
     }
     
     struct ErrorAlert {

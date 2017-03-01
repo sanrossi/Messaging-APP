@@ -26,10 +26,10 @@ class LoginViewController: UIViewController, AccountProtocol, AuthenticationProt
         super.viewDidLoad()
         
         auth = Authentication.init()
-//        if let user = FIRAuth.auth()?.currentUser {
-//            auth.signIn(user, segue: Constants.Segue.loginToMain)
-//        }
-//        
+        if let user = FIRAuth.auth()?.currentUser {
+            auth.signIn(user, segue: Constants.Segue.loginToMain)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

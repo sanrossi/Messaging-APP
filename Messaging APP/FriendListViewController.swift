@@ -24,6 +24,7 @@ class FriendListViewController: UIViewController, UITableViewDataSource, UITable
     }
     var friendArray: [FriendInfo] = []
     var beIvitedArray: [FriendInfo] = []
+    var friendSelected: FriendInfo!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +45,14 @@ class FriendListViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        
         // Pass the selected object to the new view controller.
         if (segue.identifier == Constants.Segue.listToAccept) {
-            let invitationVC = segue.destination as! AddFriendbyEmailViewController
-        //invitationVC.beIvitedArray = self.beIvitedArray
+            let invitationVC = segue.destination as! InvitationViewController
+       invitationVC.beIvitedArray = self.beIvitedArray
+
+            } else if (segue.identifier == Constants.Segue.listToMessage) {
+            let messageVC = segue.destination as! MessageViewController
+            messageVC.friendSelected = friendSelected
         }
     }
 }
@@ -107,10 +111,11 @@ extension FriendListViewController {
 // MARK: - UITableViewDelegate
 extension FriendListViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (self.beIvitedArray.count != 0 && indexPath.row == 0) {
+        if (indexPath.section == 0) {
             performSegue(withIdentifier: Constants.Segue.listToAccept, sender: nil)
         } else {
-            
+            friendSelected = friendArray[indexPath.row]
+            performSegue(withIdentifier: Constants.Segue.listToMessage, sender: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

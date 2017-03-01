@@ -23,6 +23,10 @@ class AddFriendbyEmailViewController: UIViewController,UITextFieldDelegate,AddFr
           addFriendbyEmailView.delegate = self
         }
     }
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addFriend = AddFriend.init()
@@ -75,16 +79,17 @@ extension AddFriendbyEmailViewController {
         if let email = email, let username = username {
             self.addFriendbyEmailView.resultUserNameLabel.text = username
             self.addFriendbyEmailView.resultEmailLabel.text = email
+            
         } else {
              self.addFriendbyEmailView.resultUserNameLabel.text = "Not Found"
              self.addFriendbyEmailView.resultEmailLabel.text = "Not Found"
-        
+            
         }
     }
     
     func didCheckThisEmail(result: FriendState) {
         if result == .none {
-            addFriend.invite(resultEmailLabel!, username: resultUserNameLabel!)
+            addFriend.invite(addFriendbyEmailView.resultEmailLabel.text!, username: self.addFriendbyEmailView.resultEmailLabel.text!)
         } else {
             self.errorAlert(title: Constants.ErrorAlert.alertTitle, message: "You are already friends, or waiting to accept the invitation.", onViewController: self)
         }
@@ -102,9 +107,31 @@ extension AddFriendbyEmailViewController {
             self.friendNode = self.emailToNode(email!)
 
         }
-        
     
    }
+    
+    
+
+    
+    
+    
+    func didAddButtonPressed(){
+        addFriend.check(addFriendbyEmailView.emailSearchText.text!)
+        
+        
+        
+    }
+    
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    
+    
     
 }
 

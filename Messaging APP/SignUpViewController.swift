@@ -51,8 +51,8 @@ extension SignUpViewController {
 
     func didCancelButtonPressed(email: String?, password: String?, username: String?) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-}
+       }
+     }
 
 // MARK: - AuthenticationProtocol
 extension SignUpViewController {
