@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class FriendListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FriendListDelegate {
+class FriendListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FriendshipDelegate {
     
     @IBOutlet weak var friendListTable: UITableView! {
         didSet {
@@ -17,9 +17,9 @@ class FriendListViewController: UIViewController, UITableViewDataSource, UITable
             friendListTable.delegate = self
         }
     }
-    var list: FriendList! {
+    var friendship: FriendshipProtocol! {
         didSet {
-            list.delagate = self
+            friendship.delegate = self
         }
     }
     var friendArray: [FriendInfo] = []
@@ -29,8 +29,8 @@ class FriendListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        list = FriendList.init() 
-        list.getFriendList()
+       friendship = Database().friendship()
+       friendship.getFriendListFrom(MyProfile.shared.email)
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,13 +57,14 @@ class FriendListViewController: UIViewController, UITableViewDataSource, UITable
     }
 }
 
-// MARK: - FriendListDelegate
+// MARK: - FriendshipDelegate
 extension FriendListViewController {
-    func didGetFriendList(friends friendArray: [FriendInfo], beInvited beIvitedArray: [FriendInfo]) {
-        self.friendArray = friendArray
+    func friendshipDidGetList(friends friendsArray: [FriendInfo], beInvite beIvitedArray: [FriendInfo]) {
+        self.friendArray = friendsArray
         self.beIvitedArray = beIvitedArray
         self.friendListTable.reloadData()
     }
+  
 }
 
 // MARK: - UITableViewDataSource

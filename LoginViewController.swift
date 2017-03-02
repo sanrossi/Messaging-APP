@@ -9,25 +9,30 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController, AccountProtocol, AuthenticationProtocol, LoginViewProtocol {
+class LoginViewController: UIViewController, AccountProtocol, AuthDelegate, LoginViewProtocol {
 
     @IBOutlet weak var loginView: LoginView! {
         didSet {
             loginView.delegate = self
         }
     }
-    var auth: Authentication! {
+    var auth: AuthProtocol! {
         didSet {
-            auth.delagate = self
+            auth.delegate = self
+            
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        auth = Authentication.init()
-        if let user = FIRAuth.auth()?.currentUser {
-            auth.signIn(user, segue: Constants.Segue.loginToMain)
+        auth = Database().auth()
+        if let user = auth.currentUser() {
+            MyProfile.shared.signIn(email:user.email , username: user.username)
+            DispatchQueue.main.async {
+                self.shouldPerformSegue(withIdentifier: Constants.Segue.loginToMain, sender: nil)
+            }
+            
         }
         
     }
@@ -63,14 +68,20 @@ extension LoginViewController {
 }
 
 
-// MARK: - AuthenticationProtocol
+// MARK: - AuthDelegate
 extension LoginViewController {
-    func didLogin(user: FIRUser?, error: Error?) {
+    func authDidLogin(error: Error?) {
         if let error = error {
-            self.errorAlert(title: Constants.ErrorAlert.alertTitle, message: error.localizedDescription, onViewController: self)
-        } else {
-            auth.signIn(user, segue: Constants.Segue.loginToMain)
+        self.errorAlert(title: Constants.ErrorAlert.alertTitle, message: error.localizedDescription, onViewController: self)
+        }else{
+            MyProfile.shared.signIn(email: loginView.emailInput.text!, username: auth.currentUser()!.username)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: Constants.Segue.loginToMain, sender: nil)
+        
+        
         }
-   }
+    }
+   
 
+}
 }

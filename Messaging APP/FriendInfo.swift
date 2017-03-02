@@ -53,4 +53,9 @@ struct FriendInfo {
         let info = [Constants.FirebaseKey.email: self.email, Constants.FirebaseKey.username: self.username, Constants.FirebaseKey.state: "\(self.state)"]
         return info
     }
+    func generateDict() ->Dictionary<String,Any>{
+        let info = [Constants.FirebaseKey.email:self.email,Constants.FirebaseKey.username:self.username,Constants.FirebaseKey.state:"\(self.state)"]
+         return info
+    
+    }
 }

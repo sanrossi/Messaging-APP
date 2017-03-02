@@ -8,6 +8,8 @@
 import Foundation
 
 struct Constants {
+    static let database = "Firebase"
+    
     struct Segue {
         static let loginToMain = "loginToMain"
         static let signupToMain = "signupToMain"
