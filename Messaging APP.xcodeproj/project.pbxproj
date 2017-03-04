@@ -32,12 +32,10 @@
 		030FC0261E2542F6000D192B /* AddFriendByQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FC0251E2542F6000D192B /* AddFriendByQRCodeView.swift */; };
 		03106FA41E53357F0061933D /* AddFriendAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03106FA31E53357F0061933D /* AddFriendAccountView.swift */; };
 		0311CDC81E3C6FE4005AAB4D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0311CDC71E3C6FE4005AAB4D /* SettingViewController.swift */; };
-		0313A4E31E1F96D000FEC135 /* AddFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313A4E01E1F96D000FEC135 /* AddFriend.swift */; };
 		0313A4E71E1F973700FEC135 /* FriendInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313A4E61E1F973700FEC135 /* FriendInfo.swift */; };
 		0313A4E91E1F975500FEC135 /* AccountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313A4E81E1F975500FEC135 /* AccountProtocol.swift */; };
 		0313A4EC1E1F97F300FEC135 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313A4EA1E1F97F300FEC135 /* Constants.swift */; };
 		0313A4ED1E1F97F300FEC135 /* MyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0313A4EB1E1F97F300FEC135 /* MyState.swift */; };
-		031AA4151E60335600CB9A05 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031AA4141E60335600CB9A05 /* SearchResultsController.swift */; };
 		031AE3F71E2BDC3C00B38E66 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031AE3F61E2BDC3C00B38E66 /* Message.swift */; };
 		031AE3F91E2BDC4E00B38E66 /* MessageUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031AE3F81E2BDC4E00B38E66 /* MessageUtility.swift */; };
 		031AE3FB1E2BDC8800B38E66 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031AE3FA1E2BDC8800B38E66 /* MessageViewController.swift */; };
@@ -48,7 +46,6 @@
 		0323ED631E52F58100A442B2 /* qr-code.png in Resources */ = {isa = PBXBuildFile; fileRef = 0323ED621E52F58100A442B2 /* qr-code.png */; };
 		0349AF6E1E0968330071670F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349AF6D1E0968330071670F /* MapViewController.swift */; };
 		0349AF701E099E8C0071670F /* CustomSegueToMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0349AF6F1E099E8C0071670F /* CustomSegueToMap.swift */; };
-		034EB29B1E65E4DF00044A14 /* MyPlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EB29A1E65E4DF00044A14 /* MyPlaceService.swift */; };
 		034EB29F1E66924F00044A14 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EB29E1E66924F00044A14 /* FirebaseAuth.swift */; };
 		034EB2A11E6692FE00044A14 /* MyFireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EB2A01E6692FE00044A14 /* MyFireBase.swift */; };
 		034EB2A31E6699D200044A14 /* AuthProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EB2A21E6699D200044A14 /* AuthProtocol.swift */; };
@@ -59,12 +56,13 @@
 		034EB2AD1E6742FE00044A14 /* FirebaseFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034EB2AC1E6742FE00044A14 /* FirebaseFriend.swift */; };
 		03646A101E1B727C00A3910A /* MyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03646A0F1E1B727C00A3910A /* MyQRCodeViewController.swift */; };
 		03646A121E1B843E00A3910A /* QRcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03646A111E1B843E00A3910A /* QRcodeScannerView.swift */; };
+		036B8B5A1E6859A0001D2100 /* QRCodeProtocel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036B8B591E6859A0001D2100 /* QRCodeProtocel.swift */; };
 		03712B671E44859C006E8512 /* userLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 03712B661E44859C006E8512 /* userLogo.png */; };
+		038B5F361E68586200197111 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038B5F351E68586200197111 /* QRCodeScanner.swift */; };
 		03914BC71E1A02FB002DDA3D /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03914BC61E1A02FB002DDA3D /* AddFriendsViewController.swift */; };
 		03AA41F11E265AB800BF5352 /* MyQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA41F01E265AB800BF5352 /* MyQRCodeView.swift */; };
 		03AA41F51E26A2B600BF5352 /* MyQRCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03AA41F41E26A2B600BF5352 /* MyQRCodeView.xib */; };
 		03ACE3A11DF93EC600B1AF84 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03ACE3A01DF93EC600B1AF84 /* GoogleService-Info.plist */; };
-		03B553DA1E1A71AE0023EF9A /* AddFriendbyQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B553D91E1A71AE0023EF9A /* AddFriendbyQRCodeViewController.swift */; };
 		03B5C0DA1E18A6D80024DD1D /* ContactsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B5C0D91E18A6D80024DD1D /* ContactsListTableViewController.swift */; };
 		03CD69651E1CCB7500A22177 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CD69641E1CCB7500A22177 /* AVFoundation.framework */; };
 		03CEE71F1DF8F4DD00745306 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CEE71E1DF8F4DD00745306 /* AppDelegate.swift */; };
@@ -123,12 +121,10 @@
 		030FC0251E2542F6000D192B /* AddFriendByQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendByQRCodeView.swift; sourceTree = "<group>"; };
 		03106FA31E53357F0061933D /* AddFriendAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendAccountView.swift; sourceTree = "<group>"; };
 		0311CDC71E3C6FE4005AAB4D /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = ../SettingViewController.swift; sourceTree = "<group>"; };
-		0313A4E01E1F96D000FEC135 /* AddFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriend.swift; sourceTree = "<group>"; };
 		0313A4E61E1F973700FEC135 /* FriendInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInfo.swift; sourceTree = "<group>"; };
 		0313A4E81E1F975500FEC135 /* AccountProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountProtocol.swift; sourceTree = "<group>"; };
 		0313A4EA1E1F97F300FEC135 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0313A4EB1E1F97F300FEC135 /* MyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyState.swift; sourceTree = "<group>"; };
-		031AA4141E60335600CB9A05 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		031AE3F61E2BDC3C00B38E66 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		031AE3F81E2BDC4E00B38E66 /* MessageUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUtility.swift; sourceTree = "<group>"; };
 		031AE3FA1E2BDC8800B38E66 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -139,23 +135,23 @@
 		0323ED621E52F58100A442B2 /* qr-code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qr-code.png"; sourceTree = "<group>"; };
 		0349AF6D1E0968330071670F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0349AF6F1E099E8C0071670F /* CustomSegueToMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegueToMap.swift; sourceTree = "<group>"; };
-		034EB29A1E65E4DF00044A14 /* MyPlaceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlaceService.swift; sourceTree = "<group>"; };
 		034EB29E1E66924F00044A14 /* FirebaseAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
 		034EB2A01E6692FE00044A14 /* MyFireBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFireBase.swift; sourceTree = "<group>"; };
 		034EB2A21E6699D200044A14 /* AuthProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProtocol.swift; sourceTree = "<group>"; };
 		034EB2A41E669D1800044A14 /* MyUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUser.swift; sourceTree = "<group>"; };
 		034EB2A61E66B70E00044A14 /* Myprofile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Myprofile.swift; sourceTree = "<group>"; };
-		034EB2A81E66C83300044A14 /*  Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = " Database.swift"; sourceTree = "<group>"; };
+		034EB2A81E66C83300044A14 /*  Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = " Database.swift"; path = "../ Database.swift"; sourceTree = "<group>"; };
 		034EB2AA1E672BCD00044A14 /* FriendshipProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendshipProtocol.swift; sourceTree = "<group>"; };
 		034EB2AC1E6742FE00044A14 /* FirebaseFriend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseFriend.swift; sourceTree = "<group>"; };
 		03646A0F1E1B727C00A3910A /* MyQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyQRCodeViewController.swift; sourceTree = "<group>"; };
 		03646A111E1B843E00A3910A /* QRcodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRcodeScannerView.swift; sourceTree = "<group>"; };
+		036B8B591E6859A0001D2100 /* QRCodeProtocel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeProtocel.swift; sourceTree = "<group>"; };
 		03712B661E44859C006E8512 /* userLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userLogo.png; sourceTree = "<group>"; };
+		038B5F351E68586200197111 /* QRCodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		03914BC61E1A02FB002DDA3D /* AddFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
 		03AA41F01E265AB800BF5352 /* MyQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyQRCodeView.swift; sourceTree = "<group>"; };
 		03AA41F41E26A2B600BF5352 /* MyQRCodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyQRCodeView.xib; sourceTree = "<group>"; };
 		03ACE3A01DF93EC600B1AF84 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		03B553D91E1A71AE0023EF9A /* AddFriendbyQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFriendbyQRCodeViewController.swift; path = "Messaging APP/AddFriendbyQRCodeViewController.swift"; sourceTree = "<group>"; };
 		03B5C0D91E18A6D80024DD1D /* ContactsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsListTableViewController.swift; sourceTree = "<group>"; };
 		03C75F8D1DFFD948007B7736 /* Messaging APP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Messaging APP.entitlements"; sourceTree = "<group>"; };
 		03CD69641E1CCB7500A22177 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -256,6 +252,7 @@
 			children = (
 				0313A4E81E1F975500FEC135 /* AccountProtocol.swift */,
 				034EB2A21E6699D200044A14 /* AuthProtocol.swift */,
+				036B8B591E6859A0001D2100 /* QRCodeProtocel.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -332,7 +329,6 @@
 				034EB2A01E6692FE00044A14 /* MyFireBase.swift */,
 				034EB29E1E66924F00044A14 /* FirebaseAuth.swift */,
 				034EB2AC1E6742FE00044A14 /* FirebaseFriend.swift */,
-				0313A4E01E1F96D000FEC135 /* AddFriend.swift */,
 				031AE3F81E2BDC4E00B38E66 /* MessageUtility.swift */,
 			);
 			name = FireBase;
@@ -341,12 +337,21 @@
 		0313A4E51E1F972300FEC135 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				034EB2A81E66C83300044A14 /*  Database.swift */,
 				0313A4E61E1F973700FEC135 /* FriendInfo.swift */,
 				034EB2A41E669D1800044A14 /* MyUser.swift */,
 				031AE3F61E2BDC3C00B38E66 /* Message.swift */,
 				034EB2A61E66B70E00044A14 /* Myprofile.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		038B5F341E6857DA00197111 /* AVFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				038B5F351E68586200197111 /* QRCodeScanner.swift */,
+			);
+			name = AVFoundation;
 			sourceTree = "<group>";
 		};
 		03B553DC1E1A736C0023EF9A /* addFriends */ = {
@@ -365,10 +370,6 @@
 		03CEE7121DF8F4DD00745306 = {
 			isa = PBXGroup;
 			children = (
-				034EB2A81E66C83300044A14 /*  Database.swift */,
-				034EB29A1E65E4DF00044A14 /* MyPlaceService.swift */,
-				03B553D91E1A71AE0023EF9A /* AddFriendbyQRCodeViewController.swift */,
-				031AA4141E60335600CB9A05 /* SearchResultsController.swift */,
 				030B74A01E236DE300B957D7 /* image */,
 				03CEE71D1DF8F4DD00745306 /* Messaging APP */,
 				03CEE7351DF8F4DD00745306 /* Messaging APPTests */,
@@ -396,6 +397,7 @@
 				030EFBF31E21E35F0004DB62 /* View */,
 				0313A4E51E1F972300FEC135 /* Model */,
 				0313A4DD1E1F969800FEC135 /* FireBase */,
+				038B5F341E6857DA00197111 /* AVFoundation */,
 				030B7CA61E1E4C5E00F519BF /* Protocol */,
 				03C75F8D1DFFD948007B7736 /* Messaging APP.entitlements */,
 				03CEE71E1DF8F4DD00745306 /* AppDelegate.swift */,
@@ -763,7 +765,6 @@
 				03CEE7271DF8F4DD00745306 /* Messaging_APP.xcdatamodeld in Sources */,
 				034EB2A71E66B70E00044A14 /* Myprofile.swift in Sources */,
 				0304E6631E23A7BE00E1BA9D /* AddFriendbyEmailViewController.swift in Sources */,
-				034EB29B1E65E4DF00044A14 /* MyPlaceService.swift in Sources */,
 				03AA41F11E265AB800BF5352 /* MyQRCodeView.swift in Sources */,
 				031AE3F71E2BDC3C00B38E66 /* Message.swift in Sources */,
 				031AE4011E2BDCD300B38E66 /* SendMessageHeaderView.swift in Sources */,
@@ -774,12 +775,13 @@
 				03E251DA1E0133E600424511 /* LoginViewController.swift in Sources */,
 				030EFBF61E21ECBA0004DB62 /* SignUpViewController.swift in Sources */,
 				030B2A471E233D73009AD521 /* AddFriendbyEmailView.swift in Sources */,
+				038B5F361E68586200197111 /* QRCodeScanner.swift in Sources */,
 				03E90A461E02B25900EA7DEC /* NewRegisterViewController.swift in Sources */,
 				030FC0261E2542F6000D192B /* AddFriendByQRCodeView.swift in Sources */,
+				036B8B5A1E6859A0001D2100 /* QRCodeProtocel.swift in Sources */,
 				030EB3D01E2713DE00F7802A /* AddFriendMainView.swift in Sources */,
 				03914BC71E1A02FB002DDA3D /* AddFriendsViewController.swift in Sources */,
 				0313A4ED1E1F97F300FEC135 /* MyState.swift in Sources */,
-				0313A4E31E1F96D000FEC135 /* AddFriend.swift in Sources */,
 				034EB2A31E6699D200044A14 /* AuthProtocol.swift in Sources */,
 				03646A121E1B843E00A3910A /* QRcodeScannerView.swift in Sources */,
 				031AE3F91E2BDC4E00B38E66 /* MessageUtility.swift in Sources */,
@@ -788,7 +790,6 @@
 				030D57D71E59E5F900EE1BD9 /* SearchPositionView.swift in Sources */,
 				0311CDC81E3C6FE4005AAB4D /* SettingViewController.swift in Sources */,
 				0349AF6E1E0968330071670F /* MapViewController.swift in Sources */,
-				03B553DA1E1A71AE0023EF9A /* AddFriendbyQRCodeViewController.swift in Sources */,
 				034EB2AB1E672BCD00044A14 /* FriendshipProtocol.swift in Sources */,
 				03B5C0DA1E18A6D80024DD1D /* ContactsListTableViewController.swift in Sources */,
 				034EB2A11E6692FE00044A14 /* MyFireBase.swift in Sources */,
@@ -803,7 +804,6 @@
 				03646A101E1B727C00A3910A /* MyQRCodeViewController.swift in Sources */,
 				031AE3FD1E2BDC9000B38E66 /* InvitationViewController.swift in Sources */,
 				0313A4E91E1F975500FEC135 /* AccountProtocol.swift in Sources */,
-				031AA4151E60335600CB9A05 /* SearchResultsController.swift in Sources */,
 				0313A4E71E1F973700FEC135 /* FriendInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

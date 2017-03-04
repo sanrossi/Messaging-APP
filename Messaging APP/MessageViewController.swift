@@ -3,7 +3,7 @@
 //  LocationTalk
 //
 //  Created by 鄭宇翔 on 2017/1/5.
-//  Copyright © 2017年 鄭宇翔. All rights reserved.
+//  Copyright © 2017年 iris shen. All rights reserved.
 //
 
 import UIKit

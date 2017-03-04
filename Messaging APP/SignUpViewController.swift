@@ -2,8 +2,8 @@
 //  CreateAccountViewController.swift
 //  LocationTalk
 //
-//  Created by 鄭宇翔 on 2016/12/27.
-//  Copyright © 2016年 鄭宇翔. All rights reserved.
+//  Created by 沈秋蕙 on 2016/12/27.
+//  Copyright © 2016年 iris shen. All rights reserved.
 //
 
 import UIKit

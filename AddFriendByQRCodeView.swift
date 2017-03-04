@@ -29,10 +29,7 @@ class AddFriendByQRCodeView: UIView ,AVCaptureMetadataOutputObjectsDelegate{
         
         self.delegate?.didfindMyQRCodeButtonPressed()
     }
-    
     @IBOutlet var contentView: UIView!
-    
-    
     @IBOutlet weak var QRcodeScannerView: QRcodeScannerView!
 
     
@@ -56,25 +53,7 @@ class AddFriendByQRCodeView: UIView ,AVCaptureMetadataOutputObjectsDelegate{
     
     var sessionQueue = DispatchQueue(label:"session queue",attributes:[],target:nil)
     
-    
-    
-    
-    
-    
-    //    @IBAction func focusAndExposeTap(_ sender: UITapGestureRecognizer) {
-    //        let devicePoint = self.QRcodeScannerView.videoPreviewLayer.captureDevicePointOfInterest(for: sender.location(in: sender.view))
-    //        focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
-    //
-    //
-    //
-    //
-    //
-    //
-    //    }
-    
-    
-    
-    
+
     var videoDeviceInput :AVCaptureDeviceInput!
     //影像輸入
     
@@ -205,13 +184,7 @@ class AddFriendByQRCodeView: UIView ,AVCaptureMetadataOutputObjectsDelegate{
         session.commitConfiguration()
     }
     
-    
-    
-    
-    
-    
-    
-    
+
     private class func deviceWithMediaType(_ mediaType:String,preferrinPosition position:AVCaptureDevicePosition) ->AVCaptureDevice?{
         //獲取前鏡頭
         if let devices = AVCaptureDevice.devices(withMediaType: mediaType) as?[AVCaptureDevice]{
@@ -220,13 +193,7 @@ class AddFriendByQRCodeView: UIView ,AVCaptureMetadataOutputObjectsDelegate{
         }
         return nil
     }
-    
-    
-    
-    
-    
-    
-    
+
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         //停止session
@@ -236,8 +203,7 @@ class AddFriendByQRCodeView: UIView ,AVCaptureMetadataOutputObjectsDelegate{
             let readableObject = metadataObject as! AVMetadataMachineReadableCodeObject
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             self.delegate?.sendbackAccount(friendAccount: readableObject.stringValue)
-            
-            
+  
             print(readableObject.stringValue)
         }
     }

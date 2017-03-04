@@ -10,6 +10,7 @@ import UIKit
 protocol AddFriendAccountViewProtocol:
 class{
    func didaddAccountButton()
+   func didreturnButton()
 }
 @IBDesignable
 class AddFriendAccountView: UIView, UITextFieldDelegate {
@@ -25,6 +26,12 @@ class AddFriendAccountView: UIView, UITextFieldDelegate {
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
+    }
+ 
+    @IBAction func returnButton(_ sender: Any) {
+        self.delegate?.didreturnButton()
+        
+        
     }
     
     weak var delegate: AddFriendAccountViewProtocol?

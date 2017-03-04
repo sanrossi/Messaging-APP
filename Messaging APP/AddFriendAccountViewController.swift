@@ -8,10 +8,17 @@
 
 import UIKit
 
-class AddFriendAccountViewController: UIViewController,AddFriendAccountViewProtocol{
+class AddFriendAccountViewController: UIViewController,AddFriendAccountViewProtocol,AccountProtocol,FriendshipDelegate{
     var userNameToDisplay:String = ""
     var emailToDisplay:String = ""
-     var addFriend: AddFriend!
+    var friendship: FriendshipProtocol!{
+        didSet{
+        friendship.delegate = self
+        
+        }
+    
+    
+    }
     
     @IBOutlet weak var addFriendAccountView: AddFriendAccountView!{
         didSet {
@@ -23,6 +30,7 @@ class AddFriendAccountViewController: UIViewController,AddFriendAccountViewProto
         super.viewDidLoad()
         self.addFriendAccountView.resultUserNameLabel.text! = userNameToDisplay
         self.addFriendAccountView.resultEmailLabel.text! = emailToDisplay
+        friendship = Database().friendship()
         // Do any additional setup after loading the view.
     }
 
@@ -45,8 +53,37 @@ class AddFriendAccountViewController: UIViewController,AddFriendAccountViewProto
 }
 extension AddFriendAccountViewController{
     func didaddAccountButton(){
-        addFriend.check(addFriendAccountView.resultEmailLabel.text!)
+       friendship.checkRelationshipBy(email: addFriendAccountView.resultEmailLabel.text!)
 
     }
+    func didreturnButton(){
+    dismiss(animated: true, completion: nil)
+
+    }
+    
+    
 
 }
+
+
+
+extension AddFriendAccountViewController{
+    func friendshipDidCheckRelationship(result: FriendState) {
+        if result == .none{
+            friendship.invite(email: addFriendAccountView.resultEmailLabel.text!, username: addFriendAccountView.resultUserNameLabel.text!)
+            
+        } else{
+            self.errorAlert(title:Constants.ErrorAlert.alertTitle, message:"You are already friends or waiting to accept the invitation" , onViewController:self)
+        }
+    }
+   
+
+
+    
+    
+    
+    
+    
+    
+}
+

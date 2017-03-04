@@ -68,19 +68,17 @@ class FirebaseFriend:MyFirebase,AccountProtocol,FriendshipProtocol{
                     //This email is in the friend list.
                     let friendInfo = FriendInfo.init(v as!Dictionary<String,Any>)
                     strongSelf.delegate?.friendshipDidCheckRelationship(result: friendInfo.state)
-                    
+                    return
                     
                     }
                 
-                
-                
-                
+
                 }
             
             
             }
         
-        
+            strongSelf.delegate?.friendshipDidCheckRelationship(result: .none)
         })
     }
 
@@ -90,7 +88,7 @@ class FirebaseFriend:MyFirebase,AccountProtocol,FriendshipProtocol{
             guard let strongSelf = self else {return}
             if(snapshot.exists()){
             let userInfo = snapshot.value as! Dictionary<String,Any>
-                strongSelf.delegate?.friendshipDidSearch(email: userInfo[Constants.FirebaseKey.email] as? String, username: [Constants.FirebaseKey.username] as? String)
+                strongSelf.delegate?.friendshipDidSearch(email: userInfo[Constants.FirebaseKey.email] as? String, username: userInfo[Constants.FirebaseKey.username] as? String)
             } else{
               strongSelf.delegate?.friendshipDidSearch(email: nil, username: nil)
             }

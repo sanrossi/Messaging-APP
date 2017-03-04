@@ -2,8 +2,8 @@
 //  AcceptViewController.swift
 //  LocationTalk
 //
-//  Created by 鄭宇翔 on 2017/1/3.
-//  Copyright © 2017年 鄭宇翔. All rights reserved.
+//  Created by 沈秋蕙 on 2017/1/3.
+//  Copyright © 2017年 iris shen. All rights reserved.
 //
 
 import UIKit
@@ -61,14 +61,18 @@ extension InvitationViewController {
         
         let alert = UIAlertController.init(title: "", message: "Do you accept this invitation?", preferredStyle: .actionSheet)
         let accept = UIAlertAction.init(title: "Accept", style: .default) { (action) in
-            let addFriend = AddFriend.init()
-            addFriend.accept(self.beIvitedArray[indexPath.row])
+              let fireBaseFriend = FirebaseFriend.init()
+                fireBaseFriend.accept(self.beIvitedArray[indexPath.row])
+        //****    let addFriend = AddFriend.init()
+       //     addFriend.accept(self.beIvitedArray[indexPath.row])
             self.beIvitedArray.remove(at: indexPath.row)
             self.invitationTable.deleteRows(at: [indexPath], with: .automatic)
         }
         let decline = UIAlertAction.init(title: "Decline", style: .destructive) { (action) in
-            let addFriend = AddFriend.init()
-            addFriend.decline(self.beIvitedArray[indexPath.row])
+            let fireBaseFriend = FirebaseFriend.init()
+            fireBaseFriend.decline(self.beIvitedArray[indexPath.row])
+        //*****    let addFriend = AddFriend.init()
+       //     addFriend.decline(self.beIvitedArray[indexPath.row])
             self.beIvitedArray.remove(at: indexPath.row)
             self.invitationTable.deleteRows(at: [indexPath], with: .automatic)
         }

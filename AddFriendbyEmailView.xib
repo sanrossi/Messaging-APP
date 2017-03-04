@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddFriendbyEmailView" customModule="Messaging_APP" customModuleProvider="target">
             <connections>
+                <outlet property="addButtonPressed" destination="lFc-2l-Y0D" id="jaQ-2j-9aD"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="baR-1w-mwQ"/>
                 <outlet property="emailSearchText" destination="ysm-mu-zCZ" id="M4B-H8-0nH"/>
                 <outlet property="resultEmailLabel" destination="qvH-gt-Eam" id="2gC-1r-3d2"/>
@@ -52,20 +53,11 @@
                     <color key="textColor" red="0.23137254901960785" green="0.30980392156862746" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nr8-sL-UEC">
-                    <rect key="frame" x="289" y="41" width="78" height="24"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-2l-Y0D">
+                    <rect key="frame" x="289" y="38" width="46" height="33"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="78" id="6FB-Y6-qOF"/>
-                        <constraint firstAttribute="height" constant="24" id="wY6-nQ-GRD"/>
+                        <constraint firstAttribute="height" constant="33" id="4ik-qM-3sp"/>
                     </constraints>
-                    <state key="normal" title="Button" image="Magnifier.png"/>
-                    <connections>
-                        <action selector="searchFriendsButtonPressed:" destination="-1" eventType="touchUpInside" id="ayr-P8-jUm"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-2l-Y0D">
-                    <rect key="frame" x="289" y="73" width="46" height="33"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="加入">
                         <color key="titleColor" red="0.23137254901960785" green="0.30980392156862746" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,17 +72,15 @@
                 <constraint firstItem="Kcn-gT-0sl" firstAttribute="top" secondItem="ysm-mu-zCZ" secondAttribute="bottom" constant="25" id="5nD-8F-RM4"/>
                 <constraint firstItem="qvH-gt-Eam" firstAttribute="top" secondItem="Kcn-gT-0sl" secondAttribute="bottom" constant="27" id="K97-67-07i"/>
                 <constraint firstItem="ysm-mu-zCZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="UuZ-TJ-7Um"/>
-                <constraint firstItem="Nr8-sL-UEC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="bbX-Yc-dmD"/>
+                <constraint firstItem="lFc-2l-Y0D" firstAttribute="leading" secondItem="ysm-mu-zCZ" secondAttribute="trailing" constant="8" id="nOe-l0-wwy"/>
                 <constraint firstItem="Kcn-gT-0sl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="pXs-4G-Kjf"/>
+                <constraint firstAttribute="trailing" secondItem="lFc-2l-Y0D" secondAttribute="trailing" constant="40" id="qVP-KC-nG1"/>
+                <constraint firstItem="lFc-2l-Y0D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="38" id="qhL-oA-lfX"/>
                 <constraint firstItem="ysm-mu-zCZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="t42-OS-WXs"/>
-                <constraint firstItem="Nr8-sL-UEC" firstAttribute="leading" secondItem="ysm-mu-zCZ" secondAttribute="trailing" constant="8" id="xli-Fx-iI7"/>
                 <constraint firstItem="qvH-gt-Eam" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="xuf-gz-u3l"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-165.5" y="-82.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="Magnifier.png" width="24" height="24"/>
-    </resources>
 </document>

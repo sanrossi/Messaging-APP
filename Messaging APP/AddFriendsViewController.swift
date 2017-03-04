@@ -12,30 +12,23 @@ class AddFriendsViewController: UIViewController,AddFriendMainViewProtocol {
 
     
     @IBOutlet weak var addFreindByEmailView: UIView!
-
     @IBOutlet weak var addFriendbyQRCodeView: UIView!
-  
-
     @IBOutlet weak var FrontButton: AddFriendMainView!{
         didSet{
         FrontButton.delegate = self
+          }
         }
-    }
 
-    
-    
-       override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -52,25 +45,18 @@ class AddFriendsViewController: UIViewController,AddFriendMainViewProtocol {
 extension AddFriendsViewController{
     func didQRCodeButtonPressed(){
         UIView.animate(withDuration: 0.5, animations: {
-            
             self.addFreindByEmailView.isHidden = false
             self.addFriendbyQRCodeView.isHidden = true
         })
-     
     }
     func didEmailButtonPressed(){
         UIView.animate(withDuration: 0.5, animations: {
-            
             self.addFreindByEmailView.isHidden = true
             self.addFriendbyQRCodeView.isHidden = false
         })
-     
-        
     }
     func didreturnKeyButtonPressed(){
-     
        dismiss(animated: true, completion: nil)
-    
     }
 
 

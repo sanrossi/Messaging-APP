@@ -87,7 +87,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hq5-Vp-hAf" id="2OS-gh-REq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -231,11 +231,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OPJ-5X-dkO" id="Zgl-dL-JKo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fEF-CW-RTW">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -457,7 +457,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xlf-b2-2JQ" id="dEI-8c-4TV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -539,28 +539,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7T-fr-kLi" customClass="AddFriendAccountView" customModule="Messaging_APP" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="178" width="375" height="489"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7T-fr-kLi" customClass="AddFriendAccountView" customModule="Messaging_APP" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TB1-aP-msm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Gq1-Q0-KOk"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Title" id="N04-yw-Gbx">
-                                        <barButtonItem key="leftBarButtonItem" image="backArrow.png" id="f03-yF-p6D"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="TB1-aP-msm" secondAttribute="trailing" id="Qlh-Z9-nzq"/>
-                            <constraint firstItem="TB1-aP-msm" firstAttribute="leading" secondItem="TMX-Vt-IPY" secondAttribute="leading" id="XhA-e7-zLD"/>
-                            <constraint firstItem="TB1-aP-msm" firstAttribute="top" secondItem="Kbu-mb-ngL" secondAttribute="bottom" id="f6f-yL-FX4"/>
+                            <constraint firstItem="I7T-fr-kLi" firstAttribute="top" secondItem="Kbu-mb-ngL" secondAttribute="bottom" id="O0S-Da-OGv"/>
+                            <constraint firstItem="I7T-fr-kLi" firstAttribute="leading" secondItem="TMX-Vt-IPY" secondAttribute="leading" id="Ulg-01-K8O"/>
+                            <constraint firstItem="AJG-Vx-N4N" firstAttribute="top" secondItem="I7T-fr-kLi" secondAttribute="bottom" id="lI0-A6-ojy"/>
+                            <constraint firstAttribute="trailing" secondItem="I7T-fr-kLi" secondAttribute="trailing" id="y7O-8H-9YM"/>
                         </constraints>
                     </view>
                     <connections>

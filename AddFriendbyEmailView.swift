@@ -10,8 +10,8 @@ import UIKit
 
 protocol  AddFriendbyEmailViewProtocol:
 class{
-    func didSearButtonPressed(email:String?)
-    func didAddButtonPressed()
+   func addFriendByEmailViewShouldReturn(_ textField:UITextField, email: String)
+   func addButtonDidPressed()
 }
 
 
@@ -22,26 +22,26 @@ class AddFriendbyEmailView: UIView, UITextFieldDelegate {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var emailSearchText: UITextField!{
         didSet{
-        
         emailSearchText.delegate=self
-        
-        
         }
-    
-    
     }
     
-    
- 
     @IBAction func addButton(_ sender: Any) {
-        self.delegate?.didAddButtonPressed()
-        
+        self.delegate?.addButtonDidPressed()
     }
 
+    @IBOutlet weak var addButtonPressed: UIButton!
+    @IBOutlet weak var resultUserNameLabel: UILabel!{
+        didSet{
+            resultEmailLabel.text = ""
+        }
+    }
     
-    @IBOutlet weak var resultUserNameLabel: UILabel!
-    
-    @IBOutlet weak var resultEmailLabel: UILabel!
+    @IBOutlet weak var resultEmailLabel: UILabel!{
+        didSet{
+        resultEmailLabel.text = ""
+        }
+    }
     
    
     weak var delegate: AddFriendbyEmailViewProtocol?
@@ -72,20 +72,18 @@ class AddFriendbyEmailView: UIView, UITextFieldDelegate {
     }
     
     
-    @IBAction func searchFriendsButtonPressed(_ sender: Any) {
-        let email = self.emailSearchText.text
-         self.delegate?.didSearButtonPressed(email:email)
-        
-      
-        
-        
+
+    
+}
+
+//MARK: UITextFieldDelegate
+extension AddFriendbyEmailView{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.delegate?.addFriendByEmailViewShouldReturn(textField, email: emailSearchText.text!)
+       return true
     }
-    
 
 
-    
-    
-    
 
 
 }

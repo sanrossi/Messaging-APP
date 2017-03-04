@@ -8,30 +8,37 @@
 
 import UIKit
 import AVFoundation
-class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewProtocol,AddFriendDelegate,AccountProtocol{
+class AddFriendbyQRcodeViewController: UIViewController,AddFriendbyQRCodeViewProtocol,FriendshipDelegate,AccountProtocol{
     var friendNode: String? = ""
-    var addFriend: AddFriend!
+    var friendship: FriendshipProtocol!{
+        didSet{
+            friendship.delegate = self
+            
+        }
+        
+    }
+
     fileprivate var UserNameLabel:String! = ""
     fileprivate var EmailLabel:String! = ""
+    
     @IBOutlet weak var QRcodeView: AddFriendByQRCodeView!{
         didSet {
             QRcodeView.delegate = self
         }
-        
     }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        addFriend = AddFriend.init()
-        addFriend.delagate = self
-        //self.QRcodeView.resultEmailLabel.isHidden = true
-        //self.QRcodeView.resultUserNameLabel.isHidden = true
+        friendship = Database().friendship()
         
         
         
-        
-        //self.QRcodeView.prepareForViewDidLoad(<#T##status: Bool##Bool#>)
         //將 session 傳給 view，因此使他能夠顯示圖片
+        
         self.QRcodeView.QRcodeScannerView.session = QRcodeView.session
+        
         //表二維度充滿整個區域
         self.QRcodeView.QRcodeScannerView.videoPreviewLayer.videoGravity = AVLayerVideoGravityResize
         
@@ -76,6 +83,13 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.QRcodeView.sessionQueue.async {
@@ -113,7 +127,7 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
     
     override func viewWillDisappear(_ animated: Bool) {
         self.QRcodeView.sessionQueue.async { [unowned self] in
-         //   self.QRcodeView.session.stopRunning()
+            self.QRcodeView.session.stopRunning()
             self.QRcodeView.isSessionRunning = self.QRcodeView.session.isRunning
         }
         super.viewWillDisappear(animated)
@@ -215,7 +229,7 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
     func sendbackAccount(friendAccount:String){
         
         
-        self.addFriend.searchFriends(friendAccount)
+        self.friendship.search(friendAccount)
     
         self.friendNode = self.emailToNode(friendAccount)
     }
@@ -232,51 +246,42 @@ class AddFriendbyQRcodeViewController: UIViewController ,AddFriendbyQRCodeViewPr
 // MARK: - AddFriendDelegate
 extension AddFriendbyQRcodeViewController {
     
-    func didSearchFriend(email: String?, username: String?) {
-        if let email = email, let username = username {
-            
-            UserNameLabel = username
-            
-        
-            EmailLabel = email
-            
-//     self.QRcodeView.resultEmailLabel.isHidden    = false
-//     self.QRcodeView.resultUserNameLabel.isHidden = false
-          //  self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: nil)
-        
-            self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: self)
-            
-            
-            
-            
-        } else {
-           
-            UserNameLabel = "Not Found"
-            EmailLabel = "Not Found"
-//      self.QRcodeView.resultEmailLabel.isHidden    = false
-//      self.QRcodeView.resultUserNameLabel.isHidden = false
+//    func didSearchFriend(email: String?, username: String?) {
+//        if let email = email, let username = username {
+//            
+//            UserNameLabel = username
+//            
+//        
+//            EmailLabel = email
+//            
+////     self.QRcodeView.resultEmailLabel.isHidden    = false
+////     self.QRcodeView.resultUserNameLabel.isHidden = false
+//          //  self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: nil)
+//        
 //            self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: self)
-            
-            
-        }
-        
+//            
+//            
+//            
+//            
+//        } else {
+//           
+//            UserNameLabel = "Not Found"
+//            EmailLabel = "Not Found"
+////      self.QRcodeView.resultEmailLabel.isHidden    = false
+////      self.QRcodeView.resultUserNameLabel.isHidden = false
+////            self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: self)
+//            
+//            
+//        }
+    
    
         
         
-    }
+//    }
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FriendsQRCodeToAccount"{
-            if let nextViewController = segue.destination as? AddFriendAccountViewController{
-                   print(UserNameLabel)
-                print(EmailLabel)
-                nextViewController.userNameToDisplay = UserNameLabel
-                nextViewController.emailToDisplay = EmailLabel
-            }
-        }
-    }
+
     
     
     
@@ -288,7 +293,59 @@ extension AddFriendbyQRcodeViewController {
 //        }
 //}
 
-
-
 }
+
+
+
+
+
+
+// MARK: - FriendshipDelegate
+extension AddFriendbyQRcodeViewController {
+    
+    func friendshipDidSearch(email: String?, username: String?) {
+        
+        if let email = email , let username = username{
+          
+            
+            if email != MyProfile.shared.email{
+                UserNameLabel = username
+                EmailLabel = email
+                self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: self)
+           
+            }
+            
+          } else {
+            UserNameLabel = "Not Found"
+            EmailLabel = "Not Found"
+            self.performSegue(withIdentifier: "FriendsQRCodeToAccount", sender: self)
+          
+            
+            
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FriendsQRCodeToAccount"{
+            if let nextViewController = segue.destination as? AddFriendAccountViewController{
+                print(UserNameLabel)
+                print(EmailLabel)
+                nextViewController.userNameToDisplay = UserNameLabel
+                nextViewController.emailToDisplay = EmailLabel
+            }
+        }
+    }
+    
+
+    
+
+    
+    
+    
+    
+    
+}
+
+
+
+
 

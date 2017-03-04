@@ -10,17 +10,24 @@ import UIKit
 
 
 
-class AddFriendbyEmailViewController: UIViewController,UITextFieldDelegate,AddFriendDelegate,AddFriendbyEmailViewProtocol,AccountProtocol {
+class AddFriendbyEmailViewController: UIViewController,UITextFieldDelegate,AddFriendbyEmailViewProtocol,FriendshipDelegate,AccountProtocol {
     
-    var addFriend: AddFriend!
-     var resultUserNameLabel:String? = ""
-     var resultEmailLabel:String? = ""
-
+    var friendship: FriendshipProtocol!{
+        didSet{
+        friendship.delegate = self
+        
+        }
+    
+    }
+    var resultUserNameLabel:String? = ""
+    var resultEmailLabel:String? = ""
     var friendNode: String? = ""
     
     @IBOutlet weak var addFriendbyEmailView: AddFriendbyEmailView!{
         didSet {
           addFriendbyEmailView.delegate = self
+         addFriendbyEmailView.addButtonPressed.isHidden = true
+          
         }
     }
     
@@ -29,8 +36,8 @@ class AddFriendbyEmailViewController: UIViewController,UITextFieldDelegate,AddFr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addFriend = AddFriend.init()
-        addFriend.delagate = self
+        friendship = Database().friendship()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -68,66 +75,64 @@ class AddFriendbyEmailViewController: UIViewController,UITextFieldDelegate,AddFr
 //    }
 //}
 
-
-
-
-
-// MARK: - AddFriendDelegate
-extension AddFriendbyEmailViewController {
-    
-    func didSearchFriend(email: String?, username: String?) {
-        if let email = email, let username = username {
-            self.addFriendbyEmailView.resultUserNameLabel.text = username
-            self.addFriendbyEmailView.resultEmailLabel.text = email
-            
-        } else {
-             self.addFriendbyEmailView.resultUserNameLabel.text = "Not Found"
-             self.addFriendbyEmailView.resultEmailLabel.text = "Not Found"
-            
-        }
-    }
-    
-    func didCheckThisEmail(result: FriendState) {
-        if result == .none {
-            addFriend.invite(addFriendbyEmailView.resultEmailLabel.text!, username: self.addFriendbyEmailView.resultEmailLabel.text!)
-        } else {
-            self.errorAlert(title: Constants.ErrorAlert.alertTitle, message: "You are already friends, or waiting to accept the invitation.", onViewController: self)
-        }
-    }
-}
-
 // MARK: - AddFriendbyEmailViewProtocol
 extension AddFriendbyEmailViewController {
-    
-    func didSearButtonPressed(email:String?){
-        if(email != ""){
-        
-            self.addFriend.searchFriends(email!)
- 
-            self.friendNode = self.emailToNode(email!)
-
-        }
-    
-   }
-    
-    
-
-    
-    
-    
-    func didAddButtonPressed(){
-        addFriend.check(addFriendbyEmailView.emailSearchText.text!)
-        
-        
-        
-    }
-    
-    
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func addFriendByEmailViewShouldReturn(_ textField: UITextField, email: String) {
         textField.resignFirstResponder()
-        return true
+        if !(email.isEmpty) {
+            friendship.search(email)
+        }
     }
+    
+    func addButtonDidPressed() {
+        friendship.checkRelationshipBy(email: addFriendbyEmailView.emailSearchText
+            .text!)
+    }
+    
+
+  
+}
+
+// MARK: - FriendshipDelegate
+extension AddFriendbyEmailViewController {
+    
+    func friendshipDidSearch(email: String?, username: String?) {
+      
+        if let email = email , let username = username{
+        addFriendbyEmailView.resultUserNameLabel.text = username
+        
+            if email != MyProfile.shared.email{
+            addFriendbyEmailView.resultEmailLabel.text = email
+            addFriendbyEmailView.addButtonPressed.isHidden = true
+            }
+        
+        } else {
+       addFriendbyEmailView.resultUserNameLabel.text = "Not Found"
+       addFriendbyEmailView.resultEmailLabel.text = "Not Found"
+      
+        
+        }
+    }
+
+    func friendshipDidCheckRelationship(result: FriendState) {
+        if result == .none{
+          friendship.invite(email: addFriendbyEmailView.emailSearchText.text!, username: addFriendbyEmailView.resultUserNameLabel.text!)
+           
+        } else{
+            self.errorAlert(title:Constants.ErrorAlert.alertTitle, message:"You are already friends or waiting to accept the invitation" , onViewController:self)
+        }
+    }
+
+    
+//    func didAddButtonPressed(){
+//        friendship.checkRelationshipBy(email: addFriendbyEmailView.emailSearchText.text!)
+//    
+//    }
+//
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
     
     
     
